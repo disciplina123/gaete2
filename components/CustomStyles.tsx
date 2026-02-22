@@ -159,170 +159,37 @@ const CustomStyles: React.FC<CustomStylesProps> = ({ primaryColor, backgroundMod
   const borderHighlight = isLight ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.5)';
 
   const lightOverrides = isLight ? [
-    '/* ── LIGHT MODE OVERRIDES ── */',
+    '/* ── LIGHT MODE REBUILD ── */',
+    ':root { --light-surface: rgba(255,255,255,0.92); --light-surface-strong: rgba(255,255,255,0.98); --light-elevated: rgba(248,250,255,0.96); --light-border: rgba(15,23,42,0.14); --light-border-strong: rgba(15,23,42,0.22); --light-text: #18181b; --light-muted: #52525b; }',
+    'body { color: var(--light-text) !important; }',
 
-    // Globais
-    'body { color: #18181b; }',
+    // Estrutura base
+    '.tab-panel, .pomodoro-panel { background: var(--light-surface) !important; border: 1px solid var(--light-border) !important; box-shadow: 0 10px 34px rgba(15,23,42,0.08) !important; backdrop-filter: blur(8px); }',
+    '.tab-panel::before { background: linear-gradient(90deg, transparent, rgba(15,23,42,0.06), transparent) !important; }',
+    '.tab-panel .timer-card, .pomodoro-panel .timer-card, .tab-panel .settings-card, .tab-panel .stats-card, .tab-panel .calendar-card, .tab-panel .calendar-details, .tab-panel .config-card, .tab-panel .achievements-card, .tab-panel .library-card, .tab-panel .manga-card, .tab-panel .exam-form { background: rgba(255,255,255,0.68) !important; border: 1px solid rgba(15,23,42,0.12) !important; }',
 
-    // Containers principais
-    '.tab-panel { background: rgba(255,255,255,0.88) !important; border-color: rgba(0,0,0,0.1) !important; box-shadow: 0 4px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.9) !important; }',
-    '.tab-panel::before { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent) !important; }',
-    '.pomodoro-panel { background: rgba(255,255,255,0.88) !important; border-color: rgba(0,0,0,0.1) !important; box-shadow: 0 8px 40px rgba(0,0,0,0.12) !important; }',
+    // Navegação
+    '.tabs, .tabs-gaete { background: rgba(246,248,255,0.82) !important; border-right-color: var(--light-border) !important; box-shadow: 2px 0 18px rgba(15,23,42,0.06) !important; }',
+    '.tabs-bottom { background: rgba(246,248,255,0.9) !important; border-color: var(--light-border) !important; box-shadow: 0 8px 24px rgba(15,23,42,0.10) !important; }',
+    '.tab { color: rgba(15,23,42,0.62) !important; border-radius: 12px !important; }',
+    '.tab:hover { color: rgba(15,23,42,0.9) !important; background: rgba(255,255,255,0.85) !important; }',
+    '.tab.active { color: var(--primary-color) !important; background: var(--light-surface-strong) !important; border: 1px solid var(--primary-color) !important; box-shadow: 0 0 0 2px var(--primary-glow-subtle), 0 4px 14px rgba(15,23,42,0.12) !important; }',
+    '.tab::after { background: var(--light-surface-strong) !important; color: var(--light-text) !important; border: 1px solid var(--light-border) !important; }',
+    '.tabs-gaete .tab .tab-label { color: rgba(15,23,42,0.7) !important; text-shadow: none !important; }',
+    '.tabs-gaete .tab.active .tab-label { color: var(--primary-color) !important; }',
+    '.tabs-bottom .tab { min-width: 44px !important; }',
 
-    // Cards internos que ficam transparentes dentro do tab-panel
-    '.tab-panel .timer-card, .pomodoro-panel .timer-card, .tab-panel .settings-card, .tab-panel .stats-card, .tab-panel .calendar-card, .tab-panel .calendar-details, .tab-panel .config-card, .tab-panel .achievements-card, .tab-panel .library-card, .tab-panel .manga-card, .tab-panel .exam-form { background: rgba(0,0,0,0.055) !important; border: 1px solid rgba(0,0,0,0.12) !important; }',
+    // Ícones com contraste limpo
+    '.tab svg, .tabs-bottom .tab svg, .tabs-gaete .tab svg { color: currentColor !important; stroke: currentColor !important; filter: drop-shadow(0 1px 0 rgba(255,255,255,0.6)); }',
 
-    // Sidebar
-    '.tabs { border-right-color: rgba(0,0,0,0.1) !important; }',
-    '.tab { color: rgba(0,0,0,0.38) !important; }',
-    '.tab:hover { color: rgba(0,0,0,0.8) !important; background: rgba(0,0,0,0.06) !important; filter: none !important; transform: scale(1.05) !important; }',
-    '.tab.active { color: var(--primary-color) !important; background: rgba(0,0,0,0.05) !important; filter: drop-shadow(0 0 6px var(--primary-glow)) !important; }',
-    '.tab::after { background: rgba(240,240,248,0.98) !important; color: #18181b !important; border-color: rgba(0,0,0,0.1) !important; }',
-    '.sidebar-logo-g { text-shadow: none !important; }',
-    '.sidebar-logo-rest { color: #18181b !important; }',
-    '.tabs-gaete { border-right-color: rgba(0,0,0,0.1) !important; box-shadow: 4px 0 20px rgba(0,0,0,0.08) !important; }',
-    '.tabs-gaete .tab .tab-label { color: rgba(0,0,0,0.5) !important; text-shadow: none !important; }',
-    '.tabs-gaete .tab.active .tab-label { color: var(--primary-color) !important; text-shadow: none !important; }',
-    '.tabs-gaete .tab:hover { border-left-color: var(--primary-color) !important; background: rgba(0,0,0,0.05) !important; }',
-    '.tabs-gaete .sidebar-logo { border-bottom-color: rgba(0,0,0,0.08) !important; }',
-    '.tabs-bottom { border-color: rgba(0,0,0,0.12) !important; box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important; }',
-    '.tabs-bottom .tab:hover { color: rgba(0,0,0,0.8) !important; background: rgba(0,0,0,0.06) !important; }',
-
-    // Painel principal
-    '.tab-panel { border-color: rgba(0,0,0,0.14) !important; box-shadow: 0 4px 24px rgba(0,0,0,0.1) !important; }',
-    '.tab-panel::before { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.07), transparent) !important; }',
-
-    // Settings
-    '.cfg-section-label { color: #52525b !important; border-bottom-color: rgba(0,0,0,0.1) !important; }',
-    '.cfg-card { border-color: rgba(0,0,0,0.15) !important; }',
-    '.cfg-card:hover { border-color: rgba(0,0,0,0.28) !important; background: rgba(0,0,0,0.04) !important; }',
-    '.cfg-card-title { color: #18181b !important; }',
-    '.cfg-card-desc { color: #52525b !important; }',
-    '.cfg-color-hex { color: #18181b !important; }',
-    '.cfg-btn-ghost { color: #52525b !important; border-color: rgba(0,0,0,0.15) !important; }',
-    '.cfg-btn-ghost:hover { color: #18181b !important; border-color: rgba(0,0,0,0.3) !important; background: rgba(0,0,0,0.04) !important; }',
-    '.cfg-btn-primary { color: var(--btn-text) !important; }',
-    '.cfg-btn-secondary { color: #18181b !important; border-color: rgba(0,0,0,0.15) !important; background: rgba(0,0,0,0.05) !important; }',
-    '.cfg-bg-option { border-color: rgba(0,0,0,0.1) !important; background: rgba(0,0,0,0.03) !important; }',
-    '.cfg-bg-option:hover { background: rgba(0,0,0,0.06) !important; border-color: rgba(0,0,0,0.2) !important; }',
-    '.cfg-bg-name { color: #18181b !important; }',
-    '.cfg-bg-desc, .cfg-layout-desc, .cfg-themes-hint, .cfg-theme-desc { color: #52525b !important; }',
-    '.cfg-layout-card { border-color: rgba(0,0,0,0.1) !important; background: rgba(255,255,255,0.6) !important; }',
-    '.cfg-layout-card:hover { background: rgba(0,0,0,0.03) !important; border-color: rgba(0,0,0,0.18) !important; }',
-    '.cfg-layout-name, .cfg-theme-name { color: #18181b !important; }',
-    '.cfg-theme-card { border-color: rgba(0,0,0,0.1) !important; background: rgba(255,255,255,0.6) !important; }',
-    '.cfg-theme-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.1) !important; }',
-    '.cfg-toggle { border-color: rgba(0,0,0,0.15) !important; color: #18181b !important; }',
-    '.cfg-toggle:hover { border-color: rgba(0,0,0,0.25) !important; color: #18181b !important; }',
-    '.cfg-volume-row { color: #18181b !important; }',
-    '.cfg-volume-pct { color: #18181b !important; }',
-    '.cfg-card-danger { border-color: rgba(239,68,68,0.3) !important; }',
-    '.cfg-danger-title { color: #ef4444 !important; }',
-    '.cfg-layout-check { color: var(--primary-color) !important; }',
-    '.cfg-prev-dot { background: rgba(0,0,0,0.3) !important; }',
-    '.cfg-prev-bar { background: rgba(0,0,0,0.15) !important; }',
-    '.cfg-preview-sidebar, .cfg-preview-sidebar-wide { background: rgba(0,0,0,0.08) !important; }',
-    '.cfg-preview-content { background: rgba(0,0,0,0.04) !important; }',
-    '.cfg-preview-bottombar { background: rgba(0,0,0,0.08) !important; }',
-
-    // Dashboard
-    '.db-wrap { color: #18181b !important; }',
-    '.db-objective-card { background: rgba(255,255,255,0.82) !important; border-color: rgba(0,0,0,0.08) !important; }',
-    '.db-objective-title { color: #18181b !important; }',
-    '.db-objective-desc { color: #4a4a5a !important; }',
-    '.db-objective-label { color: rgba(0,0,0,0.38) !important; }',
-    '.db-edit-btn { color: rgba(0,0,0,0.3) !important; }',
-    '.db-edit-btn:hover { color: rgba(0,0,0,0.7) !important; }',
-    '.db-pill { border-color: rgba(0,0,0,0.12) !important; color: rgba(0,0,0,0.5) !important; }',
-    '.db-progress-track { background: rgba(0,0,0,0.08) !important; }',
-    '.db-progress-label { color: rgba(0,0,0,0.35) !important; }',
-    '.db-onboard-card { background: rgba(255,255,255,0.95) !important; border-color: rgba(0,0,0,0.08) !important; }',
-    '.db-onboard-title { color: #18181b !important; }',
-    '.db-onboard-sub { color: #52525b !important; }',
-    '.db-onboard-textarea, .db-onboard-input, .db-date-select { background: rgba(0,0,0,0.04) !important; border-color: rgba(0,0,0,0.12) !important; color: #18181b !important; }',
-    '.db-date-select option { background: #eeeef8 !important; color: #18181b !important; }',
-    '.db-onboard-btn-ghost { color: rgba(0,0,0,0.45) !important; border-color: rgba(0,0,0,0.15) !important; background: transparent !important; }',
-    '.db-onboard-btn-ghost:hover { color: #18181b !important; border-color: rgba(0,0,0,0.35) !important; }',
-    '.db-score-big { color: var(--primary-color) !important; }',
-    '.db-score-unit { color: rgba(0,0,0,0.4) !important; }',
-    '.db-score-ticks { color: rgba(0,0,0,0.3) !important; }',
-    '.db-dot { background: rgba(0,0,0,0.15) !important; }',
-    '.db-dot-active { background: var(--primary-color) !important; }',
-    '.db-section-title { color: rgba(0,0,0,0.35) !important; }',
-    '.db-subject-name { color: rgba(0,0,0,0.6) !important; }',
-    '.db-subject-hours { color: rgba(0,0,0,0.35) !important; }',
-    '.db-subject-bar-wrap { background: rgba(0,0,0,0.08) !important; }',
-    '.db-today-left { color: rgba(0,0,0,0.45) !important; }',
-    '.db-today-frac { color: rgba(0,0,0,0.6) !important; }',
-    '.db-today-sep { color: rgba(0,0,0,0.25) !important; }',
-    '.db-today-track { background: rgba(0,0,0,0.08) !important; }',
-    '.db-stat-val { color: #18181b !important; }',
-    '.db-stat-lbl { color: rgba(0,0,0,0.35) !important; }',
-    '.db-stat-icon { background: rgba(0,0,0,0.05) !important; border-color: rgba(0,0,0,0.08) !important; }',
-    '.db-today-card { background: rgba(0,0,0,0.06) !important; border-color: rgba(0,0,0,0.12) !important; }',
-    '.db-stat-card { background: rgba(0,0,0,0.06) !important; border-color: rgba(0,0,0,0.12) !important; }',
-    '.db-stat-card:hover { background: rgba(0,0,0,0.1) !important; border-color: rgba(0,0,0,0.18) !important; }',
-    '.db-subjects-section { background: rgba(0,0,0,0.05) !important; border-color: rgba(0,0,0,0.12) !important; }',
-
-    // Pomodoro / timer
-    '.time-text { color: #18181b !important; }',
-    '.session-type-btn { color: rgba(0,0,0,0.45) !important; border-color: rgba(0,0,0,0.12) !important; background: rgba(0,0,0,0.04) !important; }',
-    '.session-type-btn:hover { color: #18181b !important; border-color: rgba(0,0,0,0.25) !important; }',
-    '.btn-secondary { color: #18181b !important; border-color: rgba(0,0,0,0.15) !important; background: rgba(0,0,0,0.05) !important; }',
-    '.btn-back { color: rgba(0,0,0,0.5) !important; border-color: rgba(0,0,0,0.12) !important; background: rgba(0,0,0,0.04) !important; }',
-    '.btn-back:hover { color: #18181b !important; }',
-    '.input-time { color: #18181b !important; border-bottom-color: rgba(0,0,0,0.2) !important; }',
-    '.streak-count { color: #18181b !important; }',
-
-    // Matérias
-    '.subject-name { color: #18181b !important; }',
-    '.subject-name-input { color: #18181b !important; border-bottom-color: var(--primary-color) !important; }',
-    '.modern-action-btn { color: rgba(0,0,0,0.4) !important; border-color: rgba(0,0,0,0.1) !important; }',
-    '.modern-action-btn:hover { color: #18181b !important; background: rgba(0,0,0,0.05) !important; }',
-    '.subject-app-delete { color: rgba(0,0,0,0.3) !important; }',
-    '.chapter-title-modern { color: rgba(0,0,0,0.6) !important; }',
-    '.chapter-title-modern:hover { color: #18181b !important; }',
-    '.task-label-modern { color: rgba(0,0,0,0.55) !important; }',
-    '.task-label-modern:hover { color: #18181b !important; }',
-
-    // Estatísticas
-    '.stats-period-btn { color: rgba(0,0,0,0.5) !important; border-color: rgba(0,0,0,0.12) !important; background: rgba(0,0,0,0.04) !important; }',
-    '.stats-period-btn:hover { color: #18181b !important; }',
-    '.stats-kpi-val { color: #18181b !important; }',
-    '.stats-legend-val { color: #18181b !important; }',
-    '.stat-bar-num em { color: #18181b !important; }',
-    '.stat-subject, .stat-subject-compact { color: #18181b !important; }',
-    '.stat-row span:last-child, .stat-row-compact span:last-child { color: #18181b !important; }',
-
-    // Calendário
-    '.month-title, .month-title-compact { color: #18181b !important; }',
-    '.nav-btn, .nav-btn-compact { color: rgba(0,0,0,0.5) !important; border-color: rgba(0,0,0,0.1) !important; background: rgba(0,0,0,0.04) !important; }',
-    '.nav-btn:hover, .nav-btn-compact:hover { color: #18181b !important; background: rgba(0,0,0,0.08) !important; }',
-    '.calendar-day.selected .day-number, .calendar-day:hover .day-number { color: #fff !important; }',
-    '.goal-config input, .goal-config-compact input { color: #18181b !important; }',
-    '.details-header h3 { color: #18181b !important; }',
-
-    // Task manager
-    '.tm-card-header { color: #18181b !important; }',
-    '.tm-group-name { color: #18181b !important; }',
-    '.tm-task-label { color: rgba(0,0,0,0.7) !important; }',
-    '.tm-task-input { color: #18181b !important; border-color: rgba(0,0,0,0.1) !important; background: rgba(0,0,0,0.04) !important; }',
-    '.tm-task-input::placeholder { color: rgba(0,0,0,0.25) !important; }',
-    '.tm-task-btn { color: rgba(0,0,0,0.3) !important; }',
-    '.tm-task-btn:hover { color: #18181b !important; background: rgba(0,0,0,0.06) !important; }',
-    '.tm-checkbox { border-color: rgba(0,0,0,0.2) !important; }',
-    '.tm-no-tasks { color: rgba(0,0,0,0.25) !important; }',
-    '.tm-card-body { border-top-color: rgba(0,0,0,0.06) !important; }',
-
-    // Música
-    '.music-panel { border-color: rgba(0,0,0,0.1) !important; }',
-    '.music-text { color: #52525b !important; }',
-
-    // Biblioteca / manga / conquistas
-    '.title-text { color: #18181b !important; }',
-    '.title-label { color: var(--primary-color) !important; }',
-    '.close-btn { color: rgba(0,0,0,0.4) !important; }',
-    '.close-btn:hover { color: #18181b !important; background: rgba(0,0,0,0.06) !important; }',
+    // Tipografia e controles
+    '.sidebar-logo-rest, .cfg-card-title, .cfg-layout-name, .cfg-theme-name, .db-wrap, .time-text, .subject-name, .month-title, .month-title-compact, .tm-card-header, .tm-group-name, .title-text { color: var(--light-text) !important; }',
+    '.cfg-card-desc, .cfg-bg-desc, .cfg-layout-desc, .cfg-themes-hint, .cfg-theme-desc, .music-text { color: var(--light-muted) !important; }',
+    '.cfg-card, .cfg-layout-card, .cfg-theme-card, .db-objective-card, .db-onboard-card, .db-stat-card, .db-today-card, .db-subjects-section { background: rgba(255,255,255,0.72) !important; border-color: rgba(15,23,42,0.12) !important; }',
+    '.cfg-card:hover, .cfg-layout-card:hover, .cfg-theme-card:hover, .db-stat-card:hover { border-color: rgba(15,23,42,0.24) !important; background: rgba(255,255,255,0.9) !important; }',
+    '.cfg-btn-ghost, .cfg-btn-secondary, .session-type-btn, .btn-secondary, .btn-back, .stats-period-btn, .nav-btn, .nav-btn-compact, .tm-task-input { color: rgba(15,23,42,0.78) !important; border-color: rgba(15,23,42,0.16) !important; background: rgba(255,255,255,0.7) !important; }',
+    '.cfg-btn-ghost:hover, .cfg-btn-secondary:hover, .session-type-btn:hover, .btn-secondary:hover, .btn-back:hover, .stats-period-btn:hover, .nav-btn:hover, .nav-btn-compact:hover { color: var(--light-text) !important; border-color: rgba(15,23,42,0.28) !important; background: rgba(255,255,255,0.94) !important; }',
+    '.input-time, .subject-name-input, .goal-config input, .goal-config-compact input, .tm-task-input { color: var(--light-text) !important; }',
   ].join('\n') : '';
 
   return (
