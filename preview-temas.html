@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview: Tema Moderno vs Brutalista</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;600;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            color: #fff;
+            padding: 3rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.4rem;
+            color: #999;
+            margin-bottom: 4rem;
+            letter-spacing: 1px;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .theme-section {
+            background: rgba(255,255,255,0.03);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .theme-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid;
+        }
+
+        .theme-section:nth-child(1) .theme-title {
+            color: #60a5fa;
+            border-color: #60a5fa;
+        }
+
+        .theme-section:nth-child(2) .theme-title {
+            color: #f97316;
+            border-color: #f97316;
+        }
+
+        /* MODERN THEME */
+        .modern-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .modern-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .modern-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .modern-marker {
+            width: 4px;
+            height: 24px;
+            background: #60a5fa;
+            border-radius: 2px;
+        }
+
+        .modern-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+        }
+
+        .modern-content {
+            padding-left: 2rem;
+            border-left: 1px solid rgba(255,255,255,0.05);
+            color: #aaa;
+        }
+
+        .modern-item {
+            padding: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        /* BRUTALIST THEME */
+        .brutalist-card {
+            background: #000;
+            border: 4px solid #fff;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 12px 12px 0 rgba(255,255,255,0.1);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .brutalist-card:hover {
+            border-color: #f97316;
+            box-shadow: 16px 16px 0 rgba(249, 115, 22, 0.25);
+            transform: translate(-2px, -2px);
+        }
+
+        .brutalist-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+            padding: 1rem;
+        }
+
+        .brutalist-marker {
+            width: 8px;
+            height: 40px;
+            background: #f97316;
+            border: 2px solid #f97316;
+        }
+
+        .brutalist-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .brutalist-content {
+            padding-left: 2rem;
+            border-left: 4px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.02);
+            padding: 1rem;
+        }
+
+        .brutalist-item {
+            padding: 0.6rem 0.8rem;
+            background: rgba(255,255,255,0.02);
+            border-left: 3px solid transparent;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+
+        .brutalist-item:hover {
+            background: rgba(255,255,255,0.05);
+            border-left-color: #f97316;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .feature-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #60a5fa;
+        }
+
+        .feature-desc {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        .highlight {
+            background: rgba(249, 115, 22, 0.1);
+            border: 2px solid #f97316;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .highlight h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: #f97316;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .highlight p {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        @media (max-width: 1000px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PREVIEW DOS TEMAS</h1>
+        <p class="subtitle">Compare as duas estéticas disponíveis para a aba de matérias</p>
+
+        <div class="comparison">
+            <!-- MODERN THEME -->
+            <div class="theme-section">
+                <div class="theme-title">✨ MODERNO</div>
+                
+                <div class="modern-card">
+                    <div class="modern-header">
+                        <div class="modern-marker"></div>
+                        <div class="modern-title">Matemática</div>
+                    </div>
+                    <div class="modern-content">
+                        <div class="modern-item">📁 Álgebra Linear</div>
+                        <div class="modern-item">📁 Cálculo Diferencial</div>
+                        <div class="modern-item">📁 Geometria Analítica</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(96, 165, 250, 0.1); border-radius: 8px; border: 1px solid rgba(96, 165, 250, 0.3);">
+                    <h3 style="color: #60a5fa; margin-bottom: 1rem; font-size: 1.3rem;">Características:</h3>
+                    <ul style="list-style: none; color: #ccc; font-size: 1rem; line-height: 2;">
+                        <li>✓ Bordas finas e sutis (1px)</li>
+                        <li>✓ Transparências e blur</li>
+                        <li>✓ Cantos arredondados (12px)</li>
+                        <li>✓ Cores suaves e opacas</li>
+                        <li>✓ Animações smooth</li>
+                        <li>✓ Tipografia normal</li>
+                        <li>✓ Hierarquia por linhas</li>
+                        <li>✓ Estética minimalista</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- BRUTALIST THEME -->
+            <div class="theme-section">
+                <div class="theme-title">⚡ BRUTALISTA</div>
+                
+                <div class="brutalist-card">
+                    <div class="brutalist-header">
+                        <div class="brutalist-marker"></div>
+                        <div class="brutalist-title">MATEMÁTICA</div>
+                    </div>
+                    <div class="brutalist-content">
+                        <div class="brutalist-item">📁 ÁLGEBRA LINEAR</div>
+                        <div class="brutalist-item">📁 CÁLCULO DIFERENCIAL</div>
+                        <div class="brutalist-item">📁 GEOMETRIA ANALÍTICA</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(249, 115, 22, 0.1); border: 3px solid #f97316; box-shadow: 8px 8px 0 rgba(249, 115, 22, 0.2);">
+                    <h3 style="color: #f97316; margin-bottom: 1rem; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px;">Características:</h3>
+                    <ul style="list-style: none; color: #ccc; font-size: 1rem; line-height: 2;">
+                        <li>✓ Bordas grossas (4px)</li>
+                        <li>✓ Box-shadow offset (12px 12px)</li>
+                        <li>✓ Cantos retos (0 radius)</li>
+                        <li>✓ Cores sólidas vibrantes</li>
+                        <li>✓ Animações dramáticas</li>
+                        <li>✓ Tipografia UPPERCASE bold</li>
+                        <li>✓ Hierarquia por contraste</li>
+                        <li>✓ Estética geométrica forte</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-title">🎨 Design System</div>
+                <div class="feature-desc">Dois sistemas de design completos e coesos, cada um com sua própria identidade visual forte.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">⚡ Troca Instantânea</div>
+                <div class="feature-desc">Alterne entre os temas sem recarregar a página. A mudança é imediata e fluida.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">💾 Persistência</div>
+                <div class="feature-desc">Sua escolha é salva automaticamente no navegador e incluída em backups.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">🎯 Mesma Funcionalidade</div>
+                <div class="feature-desc">Ambos os temas mantêm todas as funcionalidades. Apenas a estética muda.</div>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <h2>COMO ATIVAR?</h2>
+            <p>Vá em <strong>Configurações → Tema das Matérias</strong> e escolha seu estilo preferido!</p>
+        </div>
+    </div>
+</body>
+</html>
