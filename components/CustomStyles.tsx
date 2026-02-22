@@ -187,6 +187,9 @@ const CustomStyles: React.FC<CustomStylesProps> = ({ primaryColor, backgroundMod
     '.tabs-gaete .sidebar-logo { border-bottom-color: rgba(0,0,0,0.08) !important; }',
     '.tabs-bottom { border-color: rgba(0,0,0,0.12) !important; box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important; }',
     '.tabs-bottom .tab:hover { color: rgba(0,0,0,0.8) !important; background: rgba(0,0,0,0.06) !important; }',
+    '.tab svg, .tabs-bottom .tab svg, .tabs-gaete .tab svg { background: rgba(255,255,255,0.75) !important; border: 1px solid rgba(0,0,0,0.14) !important; border-radius: 10px !important; padding: 3px !important; box-shadow: 0 1px 4px rgba(0,0,0,0.08) !important; }',
+    '.tab:hover svg, .tabs-bottom .tab:hover svg, .tabs-gaete .tab:hover svg { background: rgba(255,255,255,0.92) !important; border-color: rgba(0,0,0,0.2) !important; }',
+    '.tab.active svg, .tabs-bottom .tab.active svg, .tabs-gaete .tab.active svg { background: rgba(255,255,255,0.97) !important; border-color: var(--primary-color) !important; box-shadow: 0 0 0 2px var(--primary-glow-subtle), 0 2px 8px rgba(0,0,0,0.14) !important; }',
 
     // Painel principal
     '.tab-panel { border-color: rgba(0,0,0,0.14) !important; box-shadow: 0 4px 24px rgba(0,0,0,0.1) !important; }',
